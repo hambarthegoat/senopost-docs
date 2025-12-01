@@ -1,0 +1,31 @@
+meta {
+  name: Create User (DEPRECATED)
+  type: http
+  seq: 1
+}
+
+# Use the public registration endpoint instead of creating users as admin.
+post {
+  url: {{base_url}}/auth/register
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "email": "newuser@example.com",
+    "password": "password123"
+  }
+}
+
+settings {
+  encodeUrl: true
+}
+
+docs {
+  Deprecated: use `POST /auth/register` to create a new end-user account. This request kept for backward reference.
+}
